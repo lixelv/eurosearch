@@ -43,7 +43,7 @@ column_names = [desc[0] for desc in cursor.description]
 if results:
     df = pd.DataFrame(results, columns=column_names)
 
-    st.dataframe(df, width=1080)
+    st.data_editor(df, hide_index=True)
     #  st.markdown(df.to_html(index=False), unsafe_allow_html=True)
 else:
     st.write("Результаты не найдены.")
