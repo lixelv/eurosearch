@@ -1,4 +1,4 @@
-import streamlit as st
+streamlit as st
 import sqlite3
 import pandas as pd
 
@@ -42,7 +42,7 @@ results = cursor.fetchall()
 column_names = [desc[0] for desc in cursor.description[:2]] + ['Клапан', 'Распылитель', 'Стакан', 'Пружина', 'Медное кольцо']
 
 # Если есть результаты, отображаем их в виде DataFrame
-if len(results) <= 5:
+if len(results) <= 5 and results:
     for i in results:
         df = pd.DataFrame([i], columns=column_names)
         # Используйте метод any() для проверки, есть ли хотя бы одно True (т.е. значение 0) в каждой строке
