@@ -1,6 +1,13 @@
-import streamlit as st
+
+streamlit as st
 import sqlite3
 import pandas as pd
+
+def make_tup_lis(lis):
+    lis = list(lis)
+    for i in range(len(lis)):
+        lis[i] = list(lis[i])
+    return lis
 
 def make_bool(lis):
     for i in lis:
@@ -41,7 +48,7 @@ else:
     # Если пользователь не ввел поисковый запрос, выбираем все данные
     cursor.execute("SELECT * FROM data")
 
-results = make_bool(cursor.fetchall())
+results = make_bool(make_tup_lis(cursor.fetchall()))
 
 # Получаем названия колонок из cursor.description
 column_names = [desc[0] for desc in cursor.description[:2]] + ['Клапан', 'Распылитель', 'Стакан', 'Пружина', 'Медное кольцо']
