@@ -58,7 +58,7 @@ if len(results) <= 5 and results:
     for i in results:
         df = pd.DataFrame([i], columns=column_names)
         # Используйте метод any() для проверки, есть ли хотя бы одно True (т.е. значение 0) в каждой строке
-        zero_rows = df.columns[(df == 0).any()].tolist()
+        zero_rows = df.columns[(df == False).any()].tolist()
         md += f'### Отсутствует запчасть у {i[1].split(" ")[-1]}.\n' if zero_rows else ''
         # Выведите названия строк
         for row in zero_rows:
