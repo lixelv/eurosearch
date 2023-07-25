@@ -39,7 +39,7 @@ else:
 results = cursor.fetchall()
 
 # Получаем названия колонок из cursor.description
-column_names = [desc[0] for desc in cursor.description[:2]] + ['Клапан', 'Распылитель', 'Стакан']
+column_names = [desc[0] for desc in cursor.description[:2]] + ['Клапан', 'Распылитель', 'Стакан', 'Пружина', 'Медное кольцо']
 
 # Если есть результаты, отображаем их в виде DataFrame
 if len(results) <= 5:
