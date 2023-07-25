@@ -2,8 +2,13 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
+def make_bool(lis):
+    for i in lis:
+        for i_ in range(len(i)):
+            lis[i][i_] = bool[lis[i][i_]] if i_ >= 2 else lis[i][i_]
+    return lis
 
-if 'session_created' not in st.session_state:
+if 'session_created'  in st.session_state:
     st.set_page_config(
         page_title="Европоиск",
         page_icon="💾",
@@ -36,7 +41,7 @@ else:
     # Если пользователь не ввел поисковый запрос, выбираем все данные
     cursor.execute("SELECT * FROM data")
 
-results = cursor.fetchall()
+results = make_bool(cursor.fetchall())
 
 # Получаем названия колонок из cursor.description
 column_names = [desc[0] for desc in cursor.description[:2]] + ['Клапан', 'Распылитель', 'Стакан', 'Пружина', 'Медное кольцо']
