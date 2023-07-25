@@ -10,8 +10,8 @@ def make_tup_lis(lis):
     return lis
 
 def make_bool(lis):
-    for i in lis:
-        for i_ in range(len(i)):
+    for i in range(len(lis)):
+        for i_ in range(len(lis[i])):
             lis[i][i_] = bool[lis[i][i_]] if i_ >= 2 else lis[i][i_]
     return lis
 
