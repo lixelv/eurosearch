@@ -9,7 +9,7 @@ cur = conn.cursor()
 cur.execute('SELECT MAX(id) FROM data')
 for i in range(1, cur.fetchone()[0]+1):
 	for _ in range(random.choice(range(0, 30))):
-		cur.execute('INSERT INTO data (name, clapan, raspil, stakan, jumper, cupper_ring) SET (SELECT name FROM data WHERE id = ?), ?, ?, ?, ?, ? WHERE id=?', (i, random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True]), i))
+		cur.execute ('INSERT INTO data (name, clapan, raspil, stakan, jumper, cupper_ring) VALUES ((SELECT name FROM data WHERE id = ?), ?, ?, ?, ?, ?)', (i, random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True]), random.choice([False, True, True])))
 conn.commit()
 # def compare_pd(df_1, df_2):
 
